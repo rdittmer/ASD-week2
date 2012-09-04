@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Tee Times>
+<Times>
 	<item>
 		<Course> Course 1</Course>
 		<Reservist>Tim Cald</Reservist>
-		<Number of Games>2</Number>
+		<NumberofGames>2</NumberofGames>
 		<Location>Front 9</Location>
 		<Date>07/13/2012</Date>
 		<Notes>none</Notes>
@@ -11,7 +11,7 @@
 	<item>
 		<Course> Course 3</Course>
 		<Reservist>Jim Car</Reservist>
-		<Number of Games>1</Number>
+		<NumberofGames>1</NumberofGames>
 		<Location>Back 9</Location>
 		<Date>07/17/2012</Date>
 		<Notes>none</Notes>
@@ -19,7 +19,7 @@
 	<item>
 		<Course> Course 2</Course>
 		<Reservist>Sherry Tiley</Reservist>
-		<Number of Games>1</Number>
+		<NumberofGames>1</NumberofGames>
 		<Location>All 18</Location>
 		<Date>07/24/2012</Date>
 		<Notes>none</Notes>
@@ -27,7 +27,7 @@
 	<item>
 		<Course> Course 5</Course>
 		<Reservist>Ares Hacklim</Reservist>
-		<Number of Games>1</Number>
+		<NumberofGames>1</NumberofGames>
 		<Location>All 18</Location>
 		<Date>07/18/2012</Date>
 		<Notes>none</Notes>
@@ -35,9 +35,9 @@
 	<item>
 		<Course> Course 4</Course>
 		<Reservist>Jerry Malk</Reservist>
-		<Number of Games>1</Number>
+		<NumberofGames>1</NumberofGames>
 		<Location>Front 9</Location>
 		<Date>07/28/2012</Date>
 		<Notes>none</Notes>
 	</item>
-</Tee>
+</Times>
