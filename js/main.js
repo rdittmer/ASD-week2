@@ -11,10 +11,10 @@ $( '#remoteData' ).on('pageinit', function(){
             type: 'GET',
             dataType: 'json',
             success:function ( result ) {
-				console.log(result);
+				//console.log(result);
                 for ( var i = 0, len = result.teeTimes.length; i < len; i++ ) {
                     var item = result.teeTimes[i];
-					console.log(item);
+					//console.log(item);
                     $( ' ' + 
 					'<div class="times">' +
 					'<p>' + item.Options[0]      + " " + item.Options[1] +
@@ -37,7 +37,7 @@ $( '#remoteData' ).on('pageinit', function(){
             type: 'GET',
             dataType: 'xml',
             success:function ( result ) {
-				console.log(result);
+				//console.log(result);
 				$(result).find('item').each(function(){
 					var course = $(this).find('Course').text();
 					var reservist = $(this).find('Reservist').text();
@@ -56,12 +56,41 @@ $( '#remoteData' ).on('pageinit', function(){
 						'</div>'
 					).appendTo('#viewData');
 				});
-
             }
         });
     });
 		
-	
+	$( '#csvButton' ).on( 'click', function() {
+		$('#viewData').empty();
+        $.ajax( {
+            url: 'xhr/data.csv',
+            type: 'GET',
+            dataType: 'text',
+            success:function ( result ) {
+				//console.log(result);
+				var lines = result.split("\n");
+				//console.log(lines);
+				var dataRow = lines[0];
+				var dataCol = dataRow.split(",");
+				for (var lineNum = 1; lineNum < lines.length; lineNum++) {
+					var row = lines[lineNum];
+					var columns = row.split(",");
+					//console.log(columns);
+					$(''+
+							'<div class="csvData">'+
+								'<p>' + dataCol[0] + " " + columns[0] +
+								'<br>'+ dataCol[1] + " " + columns[1] +
+								'<br>'+ dataCol[2] + " " + columns[2] +
+								'<br>'+ dataCol[3] + " " + columns[3] +
+								'<br>'+ dataCol[4] + " " + columns[4] +
+								'<br>'+ dataCol[5] + " " + columns[5] + '</p>' +
+							'</div>'
+						).appendTo('#viewData');
+				}
+            }
+        });
+    });
+		
 });
 		
 $('#additem').on('pageinit', function(){
