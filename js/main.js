@@ -5,7 +5,7 @@ $('#index').on('pageinit', function(){
 $( '#remoteData' ).on('pageinit', function(){
 	 
 	 $( '#jsonButton' ).on( 'click', function () {
-		$('#jsonData').empty();
+		$('#viewData').empty();
         $.ajax( {
             url: 'xhr/data.json',
             type: 'GET',
@@ -24,42 +24,39 @@ $( '#remoteData' ).on('pageinit', function(){
 					'<br>' + item.date[0]        + " " + item.date[1] +
 					'<br>' + item.notes[0]       + " " + item.notes[1] + '</p>' +
 					'</div>'
-					).appendTo( '#jsonData' );
+					).appendTo( '#viewData' );
                 }
             }
         });
     });
 	
 	$( '#xmlButton' ).on( 'click', function() {
-		$('#xmlData').empty();
+		$('#viewData').empty();
         $.ajax( {
             url: 'xhr/data.xml',
             type: 'GET',
             dataType: 'xml',
             success:function ( result ) {
 				console.log(result);
-				var data = $.parseXML(result);
-				// wrap the XML in a jQuery object to make it easier to work with
-				var items = $( data );
-				items.find("item").each(function(){
-   					 var item = $(this);
-					 console.log(item);
-    				 //console.log("Name: ", item.find("name"));
-});
-               /* for ( var i = 0, len = result.teeTimes.length; i < len; i++ ) {
-                    var item = result.teeTimes[i];
-					console.log(item);
-                    $( ' ' + 
-					'<div class="times">' +
-					'<p>' + item.Options[0]      + " " + item.Options[1] +
-					'<br>' + item.reservist[0]   + " " + item.reservist[1] + 
-					'<br>' + item.numberGames[0] + " " + item.numberGames[1] + 
-					'<br>' + item.location[0]    + " " + item.location[1] +
-					'<br>' + item.date[0]        + " " + item.date[1] +
-					'<br>' + item.notes[0]       + " " + item.notes[1] + '</p>' +
-					'</div>'
-					).appendTo( '#jsonData' );
-                }*/
+				$(result).find('item').each(function(){
+					var course = $(this).find('Course').text();
+					var reservist = $(this).find('Reservist').text();
+					var numberGames = $(this).find('NumberofGames').text();
+					var location = $(this).find('Location').text();
+					var date = $(this).find('Date').text();
+					var notes = $(this).find('Notes').text();
+					$(''+
+						'<div class="xmlData">'+
+							'<p>'+ course +
+							'<br>'+ reservist +
+							'<br>'+ numberGames +
+							'<br>'+ location +
+							'<br>'+ date + 
+							'<br>'+ notes +'</p>'+
+						'</div>'
+					).appendTo('#viewData');
+				});
+
             }
         });
     });
